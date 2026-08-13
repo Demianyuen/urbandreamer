@@ -40,7 +40,7 @@ footer{text-align:center;color:#4d5564;font-size:12px;padding:30px 20px 44px}
 <script>
 const P = new URLSearchParams(location.search);
 const pid = P.get('pid');
-const DATA = [{"slug": "hong-kong", "style": "minimal_beige", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.3}, {"slug": "hong-kong", "style": "gold_night", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.4}, {"slug": "hong-kong", "style": "noir", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.8}];
+const DATA = [{"slug": "dubai", "style": "minimal_beige", "title": "Dubai, United Arab Emirates \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.5}, {"slug": "dubai", "style": "gold_night", "title": "Dubai, United Arab Emirates \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.5}, {"slug": "dubai", "style": "noir", "title": "Dubai, United Arab Emirates \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.6}, {"slug": "hong-kong", "style": "minimal_beige", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.3}, {"slug": "hong-kong", "style": "gold_night", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.4}, {"slug": "hong-kong", "style": "noir", "title": "Hong Kong, Hong Kong \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.8}, {"slug": "istanbul", "style": "minimal_beige", "title": "Istanbul, Turkey \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.4}, {"slug": "istanbul", "style": "gold_night", "title": "Istanbul, Turkey \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.5}, {"slug": "istanbul", "style": "noir", "title": "Istanbul, Turkey \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.6}, {"slug": "london", "style": "minimal_beige", "title": "London, United Kingdom \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.4}, {"slug": "london", "style": "gold_night", "title": "London, United Kingdom \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.5}, {"slug": "london", "style": "noir", "title": "London, United Kingdom \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.6}, {"slug": "madrid", "style": "minimal_beige", "title": "Madrid, Spain \u2013 Digital Map Poster \u2013 Minimal Beige", "size_mb": 0.3}, {"slug": "madrid", "style": "gold_night", "title": "Madrid, Spain \u2013 Digital Map Poster \u2013 Gold Night", "size_mb": 0.2}, {"slug": "madrid", "style": "noir", "title": "Madrid, Spain \u2013 Digital Map Poster \u2013 Noir", "size_mb": 0.6}];
 const item = DATA.find(d => (d.slug + '_' + d.style) === pid);
 const box = document.getElementById('dl');
 if (!item) {
@@ -54,6 +54,13 @@ if (!item) {
     <a class="buy" href="${base}${item.slug}_${item.style}.jpg" download>Download JPG (${item.size_mb} MB)</a>
     <p class="note">License: personal use. © OpenStreetMap contributors. Please keep the file for your own use.</p>`;
 }
-</script>
+
+const BUNDLES = [{"pid": "bundle_dubai", "slug": "dubai", "title": "Dubai \u2014 Complete Set", "styles": ["minimal_beige", "gold_night", "noir"], "style_names": ["Minimal Beige", "Gold Night", "Noir"]}, {"pid": "bundle_hong-kong", "slug": "hong-kong", "title": "Hong Kong \u2014 Complete Set", "styles": ["minimal_beige", "gold_night", "noir"], "style_names": ["Minimal Beige", "Gold Night", "Noir"]}, {"pid": "bundle_istanbul", "slug": "istanbul", "title": "Istanbul \u2014 Complete Set", "styles": ["minimal_beige", "gold_night", "noir"], "style_names": ["Minimal Beige", "Gold Night", "Noir"]}, {"pid": "bundle_london", "slug": "london", "title": "London \u2014 Complete Set", "styles": ["minimal_beige", "gold_night", "noir"], "style_names": ["Minimal Beige", "Gold Night", "Noir"]}, {"pid": "bundle_madrid", "slug": "madrid", "title": "Madrid \u2014 Complete Set", "styles": ["minimal_beige", "gold_night", "noir"], "style_names": ["Minimal Beige", "Gold Night", "Noir"]}];
+const bnd = BUNDLES.find(b => b.pid === pid);
+if (bnd) {
+  const links = bnd.styles.map((s, i) =>
+    `<a class="buy" style="margin:8px" href="./files/${bnd.slug}_${s}.jpg" download>Download ${bnd.style_names[i]}</a>`).join('');
+  box.innerHTML = `<h2>${bnd.title}</h2><p class="ok">✓ Payment confirmed. Thank you!</p><p>Your ${bnd.styles.length} posters:</p>${links}`;
+}</script>
 </body>
 </html>
