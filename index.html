@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UrbanDreamer — City Map Posters | Real Streets, Premium Art</title>
+<meta name="description" content="Minimalist city map posters generated from real OpenStreetMap street data. Hong Kong, Dubai, London, Madrid, Istanbul. Instant digital download.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0d1117;color:#e6edf3;font-family:-apple-system,'Segoe UI',Roboto,'PingFang TC','Microsoft JhengHei',sans-serif}
+header{padding:56px 24px 20px;max-width:1200px;margin:0 auto;text-align:center}
+h1{font-size:clamp(28px,5vw,44px);letter-spacing:.04em}
+h1 .g{background:linear-gradient(90deg,#e7b75f,#d9b45b);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:#8b94a7;margin-top:10px;font-size:15px;max-width:640px;margin-left:auto;margin-right:auto}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:26px auto 8px;max-width:1000px}
+.filters button{background:#161b22;color:#8b94a7;border:1px solid #21262d;padding:8px 16px;border-radius:999px;cursor:pointer;font-size:13.5px;transition:.15s}
+.filters button:hover{color:#e6edf3}
+.filters button.active{background:#e7b75f;color:#161400;border-color:#e7b75f;font-weight:600}
+.grid{max-width:1200px;margin:24px auto 60px;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.card{background:#161b22;border:1px solid #21262d;border-radius:14px;overflow:hidden;transition:.2s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-3px);border-color:#30363d;box-shadow:0 10px 28px rgba(0,0,0,.4)}
+.imgwrap{aspect-ratio:2/3;background:#0d1117;overflow:hidden}
+.imgwrap img{width:100%;height:100%;object-fit:cover;display:block}
+.card h3{font-size:15.5px;font-weight:600;padding:14px 16px 4px}
+.card .sub{color:#8b94a7;font-size:12.5px;padding:0 16px}
+.card .foot{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 16px;margin-top:auto}
+.card .price{font-size:16px;font-weight:700;color:#e7b75f}
+.buy{background:#e7b75f;color:#161400;border:none;border-radius:8px;padding:9px 20px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;transition:.15s}
+.buy:hover{background:#f0c873}
+footer{text-align:center;color:#4d5564;font-size:12px;padding:30px 20px 44px}
+.tag{display:inline-block;font-size:11px;color:#8b94a7;border:1px solid #21262d;border-radius:999px;padding:2px 10px;margin:2px 4px 0 0}
+</style>
+</head>
+<body>
+<header>
+  <h1>Urban<span class="g">Dreamer</span></h1>
+  <p class="lede">City map posters drawn from real street data — minimalist art for the cities you love. Instant digital download, print at any size.</p>
+</header>
+<div class="filters" id="filters">
+  <button data-f="all" class="active">All</button>
+  <button data-f="minimal_beige">Minimal Beige</button>
+  <button data-f="gold_night">Gold Night</button>
+  <button data-f="noir">Noir</button>
+</div>
+<main class="grid" id="grid">
+<div class="card" data-style="minimal_beige" data-city="hong-kong">
+  <div class="imgwrap"><img loading="lazy" src="assets/hong-kong_minimal_beige.jpg" alt="Hong Kong, Hong Kong – Digital Map Poster – Minimal Beige"></div>
+  <h3>Hong Kong, Hong Kong</h3>
+  <div class="sub"><span class="tag">Minimal Beige</span> Real street data · OSM</div>
+  <div class="foot"><span class="price">$11.50</span>
+    <a class="buy" href="https://buy.stripe.com/7sY00kbVK9YM6i476cejK03" target="_blank" rel="noopener">Buy</a></div>
+</div>
+<div class="card" data-style="gold_night" data-city="hong-kong">
+  <div class="imgwrap"><img loading="lazy" src="assets/hong-kong_gold_night.jpg" alt="Hong Kong, Hong Kong – Digital Map Poster – Gold Night"></div>
+  <h3>Hong Kong, Hong Kong</h3>
+  <div class="sub"><span class="tag">Gold Night</span> Real street data · OSM</div>
+  <div class="foot"><span class="price">$11.50</span>
+    <a class="buy" href="https://buy.stripe.com/28EfZigc06MAcGs3U0ejK04" target="_blank" rel="noopener">Buy</a></div>
+</div>
+<div class="card" data-style="noir" data-city="hong-kong">
+  <div class="imgwrap"><img loading="lazy" src="assets/hong-kong_noir.jpg" alt="Hong Kong, Hong Kong – Digital Map Poster – Noir"></div>
+  <h3>Hong Kong, Hong Kong</h3>
+  <div class="sub"><span class="tag">Noir</span> Real street data · OSM</div>
+  <div class="foot"><span class="price">$11.50</span>
+    <a class="buy" href="https://buy.stripe.com/fZudRa2la9YMeOA628ejK05" target="_blank" rel="noopener">Buy</a></div>
+</div></main>
+<footer>© 2026 UrbanDreamer · Maps © OpenStreetMap contributors · Digital downloads, personal license</footer>
+<script>
+const f = document.getElementById('filters');
+f.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  f.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  const v = b.dataset.f;
+  document.querySelectorAll('.card').forEach(c => {
+    c.style.display = (v === 'all' || c.dataset.style === v) ? '' : 'none';
+  });
+});
+</script>
+</body>
+</html>
